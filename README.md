@@ -14,8 +14,9 @@ bus-violence/
 │ └── ...
 ```
 
-## Modify the config files 
+## Modify the yaml files
 
+Modify the config.yaml file in the conf directory to change the model during training. 
 
 
 ## Start Training
