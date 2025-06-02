@@ -2,14 +2,14 @@
 
 data:
     train: &common
-        _target_: datasets.BinaryViolenceDetectionDataset
-        root: ${hydra:runtime.cwd}/data/bus-violence
+        _target_: datasets.binary_violence_detection_dataset.BinaryViolenceDetectionDataset
+        root: bus_violence/videos 
         split: train
         split_seed: 87
         num_train_val_samples:
-            - 840  # num of train videos
+            - 1120  # num of train videos
             - 280  # num of validation videos
-        max_num_train_val_sample: 1120
+        max_num_train_val_sample: 1400 #1120
         num_test_samples: 280
         num_target_frames: 32
         in_memory: false
