@@ -1,9 +1,14 @@
-# bus-violence-benchmark-eval
+# Video-Classification for Bus-Violence forked by ciampluca/bus-violence-benchmark-eval
 
-TODO
+## 📂 Dataset
+During training the [bus-violence dataset](https://zenodo.org/records/7044203#.Yxm7hmxBxhE) was used. It contains videos that are classified as:
+- VIOLENCE 
+- NONVIOLENCE
 
-Basically:
+## Modify the config files 
 
-1 - Move to the data folder and run the prepare_data.sh script
 
-2 - From the root of the project, run the reproduce.sh script
+
+## Start Training
+
+python train.py
