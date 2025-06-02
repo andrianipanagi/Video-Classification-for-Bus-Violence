@@ -6,13 +6,13 @@ During training the [bus-violence dataset](https://zenodo.org/records/7044203#.Y
 - NONVIOLENCE
   
 The dataset has the structure:
-''' 
+```
 bus-violence/
 ├── videos/
 │ ├── NONVIOLCNE_1.mp4
 │ ├── VIOLENCE_2.mp4
 │ └── ...
-'''
+```
 
 ## Modify the config files 
 
