@@ -18,7 +18,7 @@ class BinaryViolenceDetectionDataset(Dataset):
     
     def __init__(
         self,
-        root='data/RWF-2000',
+        root= "bus_violence/videos", 
         split='all',
         split_seed=None,
         num_train_val_samples=None,
@@ -77,7 +77,7 @@ class BinaryViolenceDetectionDataset(Dataset):
         return len(self.video_paths)
 
     def _get_videos_in_split(self):
-        videos_paths = self.root.rglob('*.[amm][vpp][ig4]')
+        videos_paths = self.root.rglob('*.mp4')
         videos_paths = sorted(videos_paths)
 
         if self.split == 'all':
@@ -174,9 +174,14 @@ class BinaryViolenceDetectionDataset(Dataset):
         if self.frame_difference:
             frames = self._get_video_frame_differences(frames)
 
+        
         if self.target:
-            # 0: NoFight, 1: Fight
-            target = np.array([1], dtype=np.float32) if (self.video_paths[index].parts[-2] == "Fight") or (self.video_paths[index].parts[-2] == "Violence") else np.array([0], dtype=np.float32)
+            # 0: Noviolence, 1: Violence
+            filename_without_ext = self.video_paths[index].parts[-1].replace(".mp4", "") 
+            if "VIOLENCE" in filename_without_ext and "NONVIOLENCE" not in filename_without_ext:
+                  target = np.array([1], dtype=np.float32)
+            elif "NONVIOLENCE" in filename_without_ext:
+                  target = np.array([0], dtype=np.float32)
             datum = (frames, target)
         else:
             datum = (frames,)
@@ -198,8 +203,10 @@ def main():
     import numpy as np
     from PIL import Image
     from torchvision.transforms import Compose
-    from torchvision.transforms._transforms_video import RandomHorizontalFlipVideo, ToTensorVideo, NormalizeVideo
-    import torchvision.transforms._functional_video as F
+    from torchvision.transforms import RandomHorizontalFlipVideo, ToTensorVideo, NormalizeVideo
+    import torchvision.transforms as F
+    #from torchvision.transforms._transforms_video import RandomHorizontalFlipVideo, ToTensorVideo, NormalizeVideo
+    #import torchvision.transforms._functional_video as F
     
     mean = [0.45, 0.45, 0.45]
     std = [0.225, 0.225, 0.225]
@@ -215,10 +222,10 @@ def main():
     ])
     
     train_dataset_params = {
-        'root': "/mnt/Dati_SSD_2/datasets/violence_detection/bus-violence/final",
+        'root': "/home/apanag21/fileserverdata/bus_violence/videos", #"/mnt/Dati_SSD_2/datasets/violence_detection/bus-violence/final",
         'split': "train",
         'split_seed': 87,
-        'num_train_val_samples': (840, 280),
+        'num_train_val_samples': (1120, 280),
         'max_num_train_val_sample': 1120,
         'in_memory': False,
         'batch_size': 0,
