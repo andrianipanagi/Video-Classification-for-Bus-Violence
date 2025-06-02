@@ -1,0 +1,7 @@
+[2025-05-30 15:58:27,460][__main__][INFO] - Run path: bus-violence-benchmark-eval/runs/run-87
+[2025-05-30 15:58:27,460][__main__][INFO] - Use device cuda:0 for training
+[2025-05-30 15:58:28,654][__main__][INFO] - [TRAIN] BinaryViolenceDetectionDataset: train split, 1120 images, frame size (256x256)
+[2025-05-30 15:58:28,869][__main__][INFO] - [VALID] BinaryViolenceDetectionDataset: validation split, 280 images, frame size (256x256)
+[2025-05-30 15:58:29,925][__main__][INFO] - [MODEL] ResNet2Plus1D18(cache_folder=bus-violence-benchmark-eval/model_zoo, model_pretrained=True, in_channels=3, out_channels=1)
+[2025-05-30 15:58:29,928][__main__][INFO] - Training ...
+[2025-05-31 10:48:26,448][__main__][INFO] - Training ended. Exiting....
