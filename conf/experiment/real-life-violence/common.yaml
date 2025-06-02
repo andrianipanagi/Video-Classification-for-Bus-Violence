@@ -2,7 +2,7 @@
 
 defaults:
   - /common: default
-  - /common/data: real-life-violence
+  - /common/data: bus-violence 
   - /common/optim: default
 
 optim:
@@ -14,7 +14,7 @@ optim:
         _target_: torch.optim.lr_scheduler.StepLR
         step_size: 15
 
-    epochs: 40
+    epochs: 100  
 
 data:
     train: &common
@@ -22,6 +22,7 @@ data:
 
     validation:
         <<: *common   # reinsert 'train' block content
+
 
 
 
